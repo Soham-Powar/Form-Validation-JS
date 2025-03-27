@@ -9,10 +9,10 @@
 
 <body>
 	<div class="form-container">
-		<form action="#" novalidate>
+		<form action="#" novalidate id="form">
 			<div>
 				<label for="name">Name: </label>
-				<input type="text" name="name" id="name" required>
+				<input type="text" name="name" id="name" required minlength="2" , maxlength="20">
 				<div class="error-msg"></div>
 			</div>
 			<div>
@@ -22,29 +22,31 @@
 			</div>
 			<div>
 				<label for="country">Country: </label>
-				<select name="country" id="country">
+				<select name="country" id="country" required>
 					<option value="">Select one</option>
 					<option value="ind">India</option>
 					<option value="aus">Australia</option>
 					<option value="nz">New Zealand</option>
 					<option value="fr">France</option>
+					<option value="ch">China</option>
+					<option value="de">Germany</option>
 					<option value="other">Other</option>
 				</select>
 				<div class="error-msg"></div>
 			</div>
 			<div>
 				<label for="zip">Zip Code: </label>
-				<input type="text" name="zip" id="zip">
+				<input type="text" name="zip" id="zip" required>
 				<div class="error-msg"></div>
 			</div>
 			<div>
 				<label for="password">Create Password: </label>
-				<input type="password" id="password">
+				<input type="password" id="password" required>
 				<div class="error-msg"></div>
 			</div>
 			<div>
 				<label for="cnfrm-password">Confirm Password: </label>
-				<input type="password" id="cnfrm-password">
+				<input type="password" id="cnfrm-password" required>
 				<div class="error-msg"></div>
 			</div>
 
