@@ -90,18 +90,20 @@ country.addEventListener('input', (e) => {
 });
 
 zip.addEventListener('input', (e) => {
-	zip.setCustomValidity("");
 	const countryValue = country.value;
 	if(countryValue === "") {
+		zip.setCustomValidity("Select a country first!");
 		displayMessage(zip, constraints[""][1]);
 		return;
 	}
 	const zipValue = zip.value; 
   	const constraint = new RegExp(constraints[countryValue][0]);
-	
+
 	if(constraint.test(zipValue)) {
-		displayMessage(zip, "Yayyy");
+		zip.setCustomValidity("");
+		clearErrorDiv(zip);
 	} else {
+		zip.setCustomValidity(constraints[countryValue][1]);
 		displayMessage(zip, constraints[countryValue][1])
 	}
 });
