@@ -113,6 +113,12 @@ select:invalid {
 	background-color: #fdd;
 }
 
+input:valid,
+select:valid {
+	border: 2px solid rgb(6, 85, 6);
+	background-color: rgba(172, 255, 47, 0.616);
+}
+
 .error-msg {
 	grid-area: 2 / 2;
 	background-color: rgba(0, 0, 0, 0.274);
