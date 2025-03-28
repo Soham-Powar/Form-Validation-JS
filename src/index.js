@@ -124,8 +124,6 @@ password.addEventListener('input', (e) => {
 confirmPassword.addEventListener('input', (e) => {
 	const passwordValue = password.value;
 	const confirmPasswordValue = confirmPassword.value;
-	console.log(passwordValue);
-	console.log(confirmPasswordValue);
 	if(passwordValue === confirmPasswordValue) {
 		confirmPassword.setCustomValidity("");
 		clearErrorDiv(confirmPassword);
@@ -134,3 +132,8 @@ confirmPassword.addEventListener('input', (e) => {
 		displayMessage(confirmPassword);
 	}
 });
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert("Yayyy!, form was submitted");
+})
