@@ -7,14 +7,14 @@ const email = document.getElementById('email');
 const country = document.getElementById('country');
 const zip = document.getElementById('zip');
 const password = document.getElementById('password');
-const confirmPassword = document.getElementById('cnfrm-password')
+const confirmPassword = document.getElementById('confirmPassword')
 
 const errorMessages = {
 	name: "Name must be between 2-20 chars, my guy!",
 	email: "Please insert a valid mail.",
 	country: "Please select a country.",
 	zip: "Enter valid zip.",
-    password: "Please insert a valid password. Remember that a password should be at least 8 and maximum 30 characters long and should be containing at least one uppercase letter and one number.",
+    password: "Password must be at least 8 characters long, including an uppercase letter, a lowercase letter, a number, and a special symbol.",
     confirmPassword: "The password doesn't match the previous one."	
 }
 
@@ -109,19 +109,28 @@ zip.addEventListener('input', (e) => {
 });
 
 password.addEventListener('input', (e) => {
-	password.setCustomValidity("");
-  	if (!password.validity.valid) {
+	const passwordValue = password.value;
+	const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\-]).{8,}$/;
+
+	if(passwordPattern.test(passwordValue)) {
+		password.setCustomValidity("");
+		clearErrorDiv(password);
+	} else {
+		password.setCustomValidity("Password must be at least 8 characters long, including an uppercase letter, a lowercase letter, a number, and a special symbol.");
 		displayMessage(password);
-    	return;
-  	}
-	clearErrorDiv(password);
+	}
 });
 
 confirmPassword.addEventListener('input', (e) => {
-	confirmPassword.setCustomValidity("");
-  	if (!confirmPassword.validity.valid) {
+	const passwordValue = password.value;
+	const confirmPasswordValue = confirmPassword.value;
+	console.log(passwordValue);
+	console.log(confirmPasswordValue);
+	if(passwordValue === confirmPasswordValue) {
+		confirmPassword.setCustomValidity("");
+		clearErrorDiv(confirmPassword);
+	} else {
+		confirmPassword.setCustomValidity("Passwords dont match");
 		displayMessage(confirmPassword);
-    	return;
-  	}
-	clearErrorDiv(confirmPassword);
+	}
 });
